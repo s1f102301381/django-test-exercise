@@ -46,6 +46,12 @@
         <li>Status: Not Completed</li>
         {% endif %}
       </ul>
+      <div>
+        <a href="{% url 'index' %}">Top</a> | 
+        <a href="#">Edit</a> | 
+        <a href="{% url 'delete' task.id %}" style="color: red;">Delete</a> | 
+        <a href="#">Close</a>
+      </div>
     </div>
     {% endfor %}
   </body>

@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <title>Delete Task</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>Delete Task</h1>
+    <p>本当に以下のタスクを削除しますか？</p>
+
+    <div>
+        <h2>{{ task.title }}</h2>
+        <ul>
+            <li>Posted at: {{ task.posted_at }}</li>
+            {% if task.due_at %}
+            <li>Due at: {{ task.due_at }}</li>
+            {% endif %}
+        </ul>
+    </div>
+
+    <form action="{% url 'delete' task.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit" style="color: red;">Delete</button>
+        <a href="{% url 'index' %}">Cancel</a>
+    </form>
+</body>
+</html>

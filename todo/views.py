@@ -3,6 +3,7 @@ from django.utils.timezone import make_aware
 from django.utils.dateparse import parse_datetime
 from django.http import Http404
 from todo.models import Task
+from django.shortcuts import get_object_or_404, redirect
 
 
 def index(request):
@@ -36,3 +37,16 @@ def detail(request, task_id):
         'task': task,
     }
     return render(request, 'todo/detail.html', context)
+
+
+def delete(request, task_id):
+    task = get_object_or_404(Task, pk=task_id)
+    
+    if request.method == 'POST':
+        task.delete()
+        return redirect('index')
+        
+    context = {
+        'task': task
+    }
+    return render(request, 'todo/remove.html', context)
