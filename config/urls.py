@@ -7,4 +7,5 @@ urlpatterns = [
     path('', todo_views.index, name='index'),
     path('<int:task_id>/', todo_views.detail, name='detail'),
     path('<int:task_id>/update', todo_views.update, name='update'),
+    path('<int:task_id>/close', todo_views.close, name='close'),
 ]
