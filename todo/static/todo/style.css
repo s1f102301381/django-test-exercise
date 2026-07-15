@@ -1,0 +1,93 @@
+body {
+    font-family: 'Segoe UI', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+    margin: 2rem auto;
+    max-width: 800px;
+    padding: 0 1rem;
+    background: linear-gradient(135deg, #fff8e1 0%, #fbe9e7 100%);
+    color: #3d2c2c;
+    line-height: 1.6;
+}
+
+h1, h2 {
+    font-family: 'Trebuchet MS', 'Arial Rounded MT Bold', 'Segoe UI', sans-serif;
+    color: #2c3e50;
+}
+
+h1 {
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 0.3rem;
+}
+
+form {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+input, button {
+    margin-top: 0.4rem;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 999px;
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+.text, .detail-card {
+    background: white;
+    padding: 1rem 1.2rem;
+    margin-top: 1rem;
+    border-radius: 16px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.task-info {
+    padding-left: 1.2rem;
+    line-height: 1.6;
+}
+
+.action-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1rem;
+}
+
+.action-btn {
+    display: inline-block;
+    padding: 0.55rem 0.9rem;
+    border-radius: 999px;
+    background-color: #f1f5f9;
+    color: #2c3e50;
+    text-decoration: none;
+}
+
+.action-btn:hover {
+    background-color: #e2e8f0;
+    text-decoration: none;
+}
+
+.action-btn.danger {
+    background-color: #ffe4e6;
+    color: #b91c1c;
+}
+
+a {
+    color: #2980b9;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
