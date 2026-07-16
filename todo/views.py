@@ -8,11 +8,15 @@ from todo.models import Task
 
 def index(request):
     if request.method == 'POST':
+        due_at_value = request.POST.get('due_at')
+        due_at = None
+        if due_at_value:
+            due_at = make_aware(parse_datetime(due_at_value))
+
         task = Task(
             title=request.POST['title'],
-            due_at=make_aware(
-                parse_datetime(request.POST['due_at'])
-            )
+            due_at=due_at,
+            priority=request.POST.get('priority', 'medium'),
         )
         task.save()
 
@@ -61,7 +65,9 @@ def update(request, task_id):
 
     if request.method == 'POST':
         task.title = request.POST['title']
-        task.due_at = make_aware(parse_datetime(request.POST['due_at']))
+        due_at_value = request.POST.get('due_at')
+        task.due_at = make_aware(parse_datetime(due_at_value)) if due_at_value else None
+        task.priority = request.POST.get('priority', 'medium')
         task.save()
         return redirect(detail, task_id)
 
