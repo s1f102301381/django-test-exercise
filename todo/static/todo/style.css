@@ -91,3 +91,24 @@ a {
 a:hover {
     text-decoration: none;
 }
+
+.priority-badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: white;
+}
+
+.priority-high {
+    background-color: #dc2626;
+}
+
+.priority-medium {
+    background-color: #f59e0b;
+}
+
+.priority-low {
+    background-color: #16a34a;
+}

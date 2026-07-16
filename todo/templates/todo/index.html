@@ -23,6 +23,14 @@
         <input id="dueInput" name="due_at" type="datetime-local">
       </div>
       <div>
+        <label for="priorityInput">優先度</label><br>
+        <select id="priorityInput" name="priority">
+          <option value="high">高</option>
+          <option value="medium" selected>中</option>
+          <option value="low">低</option>
+        </select>
+      </div>
+      <div>
         <button type="submit">登録</button>
       </div>
     </form>
@@ -37,14 +45,15 @@
     <div class="text">
       <h2><a href="{% url "detail" task.id %}">{{ task.title }}</a></h2>
       <ul>
-        <li>Posted at: {{ task.posted_at }}</li>
+        <li>作成日時: {{ task.posted_at }}</li>
         {% if task.due_at %} 
-        <li>Due at: {{ task.due_at }}</li>
+        <li>期限: {{ task.due_at }}</li>
         {% endif %}
+        <li>優先度: <span class="priority-badge priority-{{ task.priority }}">{{ task.get_priority_display }}</span></li>
         {% if task.completed %} 
-        <li>Status: Completed</li>
+        <li>状態: 完了</li>
         {% else %}
-        <li>Status: Not Completed</li>
+        <li>状態: 未完了</li>
         {% endif %}
       </ul>
     </div>
