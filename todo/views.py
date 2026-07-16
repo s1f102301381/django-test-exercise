@@ -58,10 +58,7 @@ def delete(request, task_id):
 
 
 def update(request, task_id):
-    try:
-        task = Task.objects.get(pk=task_id)
-    except Task.DoesNotExist:
-        raise Http404("Task does not exist")
+    task = get_object_or_404(Task, pk=task_id)
 
     if request.method == 'POST':
         task.title = request.POST['title']
@@ -69,7 +66,7 @@ def update(request, task_id):
         task.due_at = make_aware(parse_datetime(due_at_value)) if due_at_value else None
         task.priority = request.POST.get('priority', 'medium')
         task.save()
-        return redirect(detail, task_id)
+        return redirect('detail', task_id=task_id)
 
     context = {
         'task': task
