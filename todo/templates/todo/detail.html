@@ -17,6 +17,7 @@
         {% if task.due_at %}
         <li><strong>Due at:</strong> {{ task.due_at }}</li>
         {% endif %}
+        <li><strong>優先度:</strong> <span class="priority-badge priority-{{ task.priority }}">{{ task.get_priority_display }}</span></li>
         {% if task.completed %}
         <li><strong>Status:</strong> Completed</li>
         {% else %}

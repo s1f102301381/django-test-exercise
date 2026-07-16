@@ -23,6 +23,14 @@
         <input id="dueInput" name="due_at" type="datetime-local">
       </div>
       <div>
+        <label for="priorityInput">優先度</label><br>
+        <select id="priorityInput" name="priority">
+          <option value="high">高</option>
+          <option value="medium" selected>中</option>
+          <option value="low">低</option>
+        </select>
+      </div>
+      <div>
         <button type="submit">Submit</button>
       </div>
     </form>
@@ -41,6 +49,7 @@
         {% if task.due_at %} 
         <li>Due at: {{ task.due_at }}</li>
         {% endif %}
+        <li>優先度: <span class="priority-badge priority-{{ task.priority }}">{{ task.get_priority_display }}</span></li>
         {% if task.completed %} 
         <li>Status: Completed</li>
         {% else %}
