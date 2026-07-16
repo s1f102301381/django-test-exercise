@@ -196,6 +196,25 @@ class TodoViewTestCase(TestCase):
         )
         self.assertEqual(updated_task.priority, 'high')
 
+    def test_update_post_trailing_slash_updates_existing_task(self):
+        task = Task(title='task1')
+        task.save()
+
+        client = Client()
+        data = {
+            'title': 'updated_task',
+            'due_at': '2024-08-15 10:30:00',
+            'priority': 'low'
+        }
+        response = client.post('/{}/update/'.format(task.pk), data)
+
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(Task.objects.count(), 1)
+
+        updated_task = Task.objects.get(pk=task.pk)
+        self.assertEqual(updated_task.title, 'updated_task')
+        self.assertEqual(updated_task.priority, 'low')
+
     def test_update_post_fail(self):
         client = Client()
         data = {

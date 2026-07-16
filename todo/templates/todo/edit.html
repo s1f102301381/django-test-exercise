@@ -12,7 +12,7 @@
   <body>
     <h1>Edit task</h1>
     <p>You can edit tasks from the following form.</p>
-    <form action="{% url 'update' task.id%}" method="post">
+    <form action="{% url 'update' task.id %}" method="post">
       {% csrf_token %}
       <div>
         <label for="titleInput">Title</label><br>
