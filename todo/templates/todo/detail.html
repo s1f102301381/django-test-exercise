@@ -3,7 +3,7 @@
 <html lang="ja">
 
   <head>
-    <title>To Do Application</title>
+    <title>タスク詳細</title>
     <meta charset="UTF-8">
     <meta name="author" content="INIAD">
     <link rel="stylesheet" href="{% static 'todo/style.css' %}">
@@ -13,23 +13,23 @@
     <div class="detail-card">
       <h1>{{ task.title }}</h1>
       <ul class="task-info">
-        <li><strong>Posted at:</strong> {{ task.posted_at }}</li>
+        <li><strong>登録日：</strong> {{ task.posted_at }}</li>
         {% if task.due_at %}
-        <li><strong>Due at:</strong> {{ task.due_at }}</li>
+        <li><strong>期限：</strong> {{ task.due_at }}</li>
         {% endif %}
         <li><strong>優先度:</strong> <span class="priority-badge priority-{{ task.priority }}">{{ task.get_priority_display }}</span></li>
         {% if task.completed %}
-        <li><strong>Status:</strong> Completed</li>
+        <li><strong>状態：</strong> 完了</li>
         {% else %}
-        <li><strong>Status:</strong> Not Completed</li>
+        <li><strong>状態：</strong> 未完了</li>
         {% endif %}
       </ul>
 
       <div class="action-links">
-        <a href="{% url 'index' %}" class="action-btn">Top</a>
-        <a href="{% url 'update' task.id %}" class="action-btn">Edit</a>
-        <a href="{% url 'delete' task.id %}" class="action-btn danger">Delete</a>
-        <a href="{% url 'close' task.id %}" class="action-btn">Close</a>
+        <a href="{% url 'index' %}" class="action-btn">一覧へ</a>
+        <a href="{% url 'update' task.id %}" class="action-btn">編集</a>
+        <a href="{% url 'delete' task.id %}" class="action-btn danger">削除</a>
+        <a href="{% url 'close' task.id %}" class="action-btn">完了にする</a>
       </div>
     </div>
   </body>

@@ -4,3 +4,4 @@ __pycache__/
 *.log
 db.sqlite3config/urls.py.bak
 config/urls.py.bak
+db.sqlite3
