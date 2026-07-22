@@ -112,3 +112,16 @@ a:hover {
 .priority-low {
     background-color: #16a34a;
 }
+
+/* 締切日の近い/過ぎたタスクの背景色 */
+.text.overdue {
+    /* 軽い赤背景 */
+    background-color: #ffe6e6;
+    border-left: 6px solid #dc2626;
+}
+
+.text.soon {
+    /* 軽い黄背景 */
+    background-color: #fff9e6;
+    border-left: 6px solid #f59e0b;
+}
