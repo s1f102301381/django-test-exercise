@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.timezone import make_aware
+from django.utils import timezone
 from django.utils.dateparse import parse_datetime
 from django.http import Http404
 
@@ -25,8 +26,23 @@ def index(request):
     else:
         tasks = Task.objects.order_by('-posted_at')
 
+    # 現在時刻を取得し、各タスクに締切の状態を注釈します。
+    # テンプレート側ではこの `deadline_status` を使って背景色を切り替えます。
+    now = timezone.now()
+    for task in tasks:
+        status = ''
+        if task.due_at:
+            # 締切を過ぎている場合は赤 (overdue)、締切まで3日以内は黄 (soon)
+            delta = task.due_at - now
+            if task.due_at < now:
+                status = 'overdue'
+            elif delta.total_seconds() <= 3 * 24 * 3600:
+                status = 'soon'
+        task.deadline_status = status
+
     context = {
-        'tasks': tasks
+        'tasks': tasks,
+        'now': now,  # 参照用に現在時刻をテンプレートへ渡しておく
     }
 
     return render(request, 'todo/index.html', context)
